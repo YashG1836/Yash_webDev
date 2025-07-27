@@ -30,3 +30,70 @@ document.querySelectorAll('a.nav-link').forEach(link => {
     }
   });
 });
+
+// Show timeline items on scroll
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+function showOnScroll() {
+  const triggerBottom = window.innerHeight * 0.9;
+
+  timelineItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    if (itemTop < triggerBottom) {
+      item.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
+
+
+
+// Reveal contact box on scroll
+function revealAnimatedBoxes() {
+  const animatedBoxes = document.querySelectorAll('.animated-box');
+  const triggerPoint = window.innerHeight * 0.9;
+
+  animatedBoxes.forEach(box => {
+    const boxTop = box.getBoundingClientRect().top;
+    if (boxTop < triggerPoint) {
+      box.classList.add('reveal');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealAnimatedBoxes);
+window.addEventListener('load', revealAnimatedBoxes);
+
+
+function revealTimelineItems() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const triggerBottom = window.innerHeight * 0.9;
+
+  timelineItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    if (itemTop < triggerBottom) {
+      item.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealTimelineItems);
+window.addEventListener('load', revealTimelineItems);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const faders = document.querySelectorAll(".fade-in");
+
+  function handleScroll() {
+    faders.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add("visible");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll(); // Run once on page load
+});
